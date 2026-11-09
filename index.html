@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ditt Företag – exempelhemsida</title>
+  <meta name="description" content="Exempel på hur en enkel hemsida för ett lokalt företag kan se ut.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="cafe">
+
+  <!-- Demo-väljare: visar hur samma mall passar olika branscher -->
+  <div class="demo-bar" role="region" aria-label="Demoläge">
+    <span>Exempelsida – visa som:</span>
+    <div class="demo-buttons">
+      <button type="button" data-set="cafe" class="active">Café</button>
+      <button type="button" data-set="hantverkare">Hantverkare</button>
+      <button type="button" data-set="mekaniker">Bilverkstad</button>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="logo">
+        <span class="logo-mark" data-bind="logoMark">K</span>
+        <span data-bind="name">Kafé Linden</span>
+      </a>
+      <button class="menu-toggle" aria-label="Öppna meny" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav-links">
+        <a href="#tjanster" data-bind="navServices">Meny</a>
+        <a href="#om">Om oss</a>
+        <a href="#omdomen">Omdömen</a>
+        <a href="#kontakt" class="btn btn-small">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow" data-bind="eyebrow">Café & bageri i centrum</p>
+          <h1 data-bind="headline">Nybakat varje morgon, sedan 2009.</h1>
+          <p class="lead" data-bind="lead">Surdegsbröd, kanelbullar och kaffe från lokala rosterier. Slå dig ner en stund eller ta med något gott på vägen.</p>
+          <div class="hero-actions">
+            <a href="#kontakt" class="btn" data-bind="cta">Hitta hit</a>
+            <a href="#tjanster" class="btn btn-ghost" data-bind="cta2">Se menyn</a>
+          </div>
+          <ul class="hero-facts">
+            <li data-bind="fact1">⭐ 4,8 på Google</li>
+            <li data-bind="fact2">📍 Storgatan 12</li>
+            <li data-bind="fact3">☕ Öppet idag 07–18</li>
+          </ul>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-card">
+            <div class="hero-icon" data-bind="heroIcon">☕</div>
+            <p class="hero-card-title" data-bind="heroCardTitle">Dagens fika</p>
+            <p class="hero-card-text" data-bind="heroCardText">Kardemummabulle + kaffe</p>
+            <p class="hero-card-price" data-bind="heroCardPrice">55 kr</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tjänster -->
+    <section id="tjanster" class="section">
+      <div class="container">
+        <p class="eyebrow" data-bind="servicesEyebrow">Från vårt kök</p>
+        <h2 data-bind="servicesTitle">Det här erbjuder vi</h2>
+        <div class="cards" id="services"></div>
+      </div>
+    </section>
+
+    <!-- Om oss -->
+    <section id="om" class="section section-alt">
+      <div class="container about-grid">
+        <div class="about-visual" aria-hidden="true">
+          <span data-bind="aboutIcon">🥐</span>
+        </div>
+        <div>
+          <p class="eyebrow">Om oss</p>
+          <h2 data-bind="aboutTitle">Ett familjeägt kafé mitt i stan</h2>
+          <p data-bind="aboutText1">Vi är Anna och Erik. Vi öppnade Kafé Linden för att skapa en plats där grannar möts över en kopp kaffe och något hembakat.</p>
+          <p data-bind="aboutText2">Allt bakas på plats varje morgon med råvaror från gårdar i närheten. Vi har alltid glutenfria och veganska alternativ.</p>
+          <ul class="checklist" id="usps"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Omdömen -->
+    <section id="omdomen" class="section">
+      <div class="container">
+        <p class="eyebrow">Omdömen</p>
+        <h2>Det här säger våra kunder</h2>
+        <div class="reviews" id="reviews"></div>
+      </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt" class="section section-alt">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">Kontakt</p>
+          <h2 data-bind="contactTitle">Välkommen förbi!</h2>
+          <p data-bind="contactText">Har du frågor om beställningstårtor eller catering? Hör av dig så återkommer vi samma dag.</p>
+          <ul class="contact-list">
+            <li><strong>Adress</strong><span data-bind="address">Storgatan 12, 123 45 Småstad</span></li>
+            <li><strong>Telefon</strong><a href="tel:0123456789">012-345 67 89</a></li>
+            <li><strong>E-post</strong><a href="mailto:hej@exempel.se">hej@exempel.se</a></li>
+          </ul>
+          <h3>Öppettider</h3>
+          <table class="hours" id="hours"></table>
+        </div>
+        <form class="contact-form" onsubmit="event.preventDefault(); this.querySelector('.form-note').hidden = false; this.reset();">
+          <h3 data-bind="formTitle">Skicka ett meddelande</h3>
+          <label>Namn<input type="text" name="namn" required autocomplete="name"></label>
+          <label>Telefon eller e-post<input type="text" name="kontakt" required></label>
+          <label>Meddelande<textarea name="meddelande" rows="4" required data-bind-placeholder="formPlaceholder" placeholder="Jag vill beställa en tårta till lördag…"></textarea></label>
+          <button type="submit" class="btn">Skicka</button>
+          <p class="form-note" hidden>Tack! Vi hör av oss så snart vi kan. (Detta är en demo – inget skickades.)</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 <span data-bind="name">Kafé Linden</span> · <span data-bind="address">Storgatan 12, 123 45 Småstad</span></p>
+      <p class="muted">Exempelhemsida – alla namn och uppgifter är påhittade.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
